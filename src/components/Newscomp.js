@@ -69,11 +69,11 @@ useEffect(()=>{
         <h3 className="text-center" style={{marginTop:"80px"}}>Top {capitalizeFirstLetter(props.category)} Headlines</h3>
         
         <InfiniteScroll
-          dataLength={articles.length}
+          dataLength={articles ? articles.length : 0}
           next={fetchMoreData}
-          hasMore={articles.length !== totalResults}
-          loader={loadingScroll && <Spinnercomp/>}
-        >
+          hasMore={articles ? articles.length !== totalResults : false}
+          loader={loadingScroll && <Spinnercomp />}
+          >
           <div className="container">
             <div className="cotainer row my-4">
             {articles.length > 0 ? (
@@ -82,7 +82,7 @@ useEffect(()=>{
                 <Newsitemcomp title = {element.title} description= {element.description} imageUrl= {element.urlToImage} URL={element.url} sourceName = {element.source.name} date = {element.publishedAt} author={!element.author?"Unknown":element.author} />
               </div>
             })
-            ) : (!loading && <> <p className="text-center" >Oop's we have encounered the daily limits</p><small className="text-center" >Come back again...</small></>
+            ) : (!loading || loadingScroll && <> <p className="text-center" >Oop's we have encounered the daily limits</p><small className="text-center" >Come back again...</small></>
             )}
             </div>
             </div>
