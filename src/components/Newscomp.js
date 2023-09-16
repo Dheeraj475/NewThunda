@@ -82,7 +82,7 @@ useEffect(()=>{
                 <Newsitemcomp title = {element.title} description= {element.description} imageUrl= {element.urlToImage} URL={element.url} sourceName = {element.source.name} date = {element.publishedAt} author={!element.author?"Unknown":element.author} />
               </div>
             })
-            ) : (!loading || loadingScroll && <> <p className="text-center" >Oop's we have encounered the daily limits</p><small className="text-center" >Come back again...</small></>
+            ) : (!loading <> <p className="text-center" >Oop's we have encounered the daily limits</p><small className="text-center" >Come back again...</small></>
             )}
             </div>
             </div>
